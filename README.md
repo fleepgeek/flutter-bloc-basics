@@ -1,10 +1,23 @@
 # flutter_bloc_basics
 
-A new Flutter project.
+An app to showcase and learn about the powerful features of Reactive Programming using the BLoC pattern.
+
+## Tutorial Link
+
+Watch as we join forces to Demystify this innocent but powerful pattern.
+Playlist [Here](https://github.com/fleepgeek/flutter-bloc-basics)
+
+### What you'll learn
+
+- Dart Streams
+- BLoC pattern
+- Asynchronous Programming
+- Reactive Programming
+- State Management
+- RxDart
+- and lots more
 
 ## Getting Started
-
-This project is a starting point for a Flutter application.
 
 A few resources to get you started if this is your first Flutter project:
 

@@ -1,6 +1,5 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc_basics/bloc/friends_bloc.dart';
 
 class FriendList extends StatefulWidget {
   @override
@@ -8,21 +7,14 @@ class FriendList extends StatefulWidget {
 }
 
 class _FriendListState extends State<FriendList> {
-  List<String> _friends = [];
-  final _friendsController = StreamController<List<String>>();
-
+  final friendsBloc = FriendsBloc();
   final _textController = TextEditingController();
 
   @override
   void dispose() {
-    _friendsController.close();
+    friendsBloc.dispose();
     _textController.dispose();
     super.dispose();
-  }
-
-  void addFriend(String value) {
-    _friends.add(value);
-    _friendsController.sink.add(_friends);
   }
 
   @override
@@ -45,7 +37,7 @@ class _FriendListState extends State<FriendList> {
                 hintText: 'Enter New Friend',
               ),
               onSubmitted: (value) {
-                addFriend(value);
+                friendsBloc.addFriend(value);
                 _textController.clear();
               },
             ),
@@ -57,11 +49,11 @@ class _FriendListState extends State<FriendList> {
 
   Widget _buildFriendList() {
     return StreamBuilder<List<String>>(
-        stream: _friendsController.stream,
+        stream: friendsBloc.friendsStream,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return ListView.separated(
-              itemCount: _friends.length,
+              itemCount: friendsBloc.friends.length,
               separatorBuilder: (context, index) => Divider(),
               itemBuilder: (context, index) {
                 return ListTile(

@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc_basics/bloc/movie_search_bloc.dart';
 
 class CustomAppBar extends StatelessWidget {
+  final bloc;
+
+  const CustomAppBar({Key key, @required this.bloc}) : super(key: key);
+
   double appBarHeight(BuildContext context) =>
       150.0 + MediaQuery.of(context).padding.top;
 
@@ -24,7 +29,7 @@ class CustomAppBar extends StatelessWidget {
                     .style
                     .copyWith(fontSize: 34, color: Colors.white),
               ),
-              _buildSearchBox(),
+              _buildSearchBox(bloc),
             ],
           ),
         ),
@@ -32,7 +37,7 @@ class CustomAppBar extends StatelessWidget {
     );
   }
 
-  Widget _buildSearchBox() {
+  Widget _buildSearchBox(MovieSearchBloc bloc) {
     return Card(
       elevation: 3.0,
       shape: RoundedRectangleBorder(
@@ -46,7 +51,7 @@ class CustomAppBar extends StatelessWidget {
           hintText: 'Enter a Movie Title',
           fillColor: Colors.white,
         ),
-        onSubmitted: (value) {},
+        onSubmitted: bloc.addQuery,
       ),
     );
   }
