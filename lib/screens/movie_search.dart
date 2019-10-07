@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc_basics/bloc/bloc_provider.dart';
 import 'package:flutter_bloc_basics/bloc/movie_search_bloc.dart';
 import 'package:flutter_bloc_basics/models/movie_model.dart';
 import 'package:flutter_bloc_basics/ui_widgets/custom_app_bar.dart';
@@ -10,35 +11,38 @@ class MovieSearch extends StatefulWidget {
 }
 
 class _MovieSearchState extends State<MovieSearch> {
-  final movieSearchBloc = MovieSearchBloc();
+  MovieSearchBloc movieSearchBloc;
 
   @override
-  void dispose() {
-    movieSearchBloc.dispose();
-    super.dispose();
+  void initState() {
+    super.initState();
+    movieSearchBloc = MovieSearchBloc();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: PreferredSize(
-        preferredSize:
-            Size.fromHeight(150.0 + MediaQuery.of(context).padding.top),
-        child: CustomAppBar(bloc: movieSearchBloc),
-      ),
-      body: SafeArea(
-        child: Container(
-          child: StreamBuilder<Movie>(
-              stream: movieSearchBloc.movieStream,
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  return MovieDetail(snapshot.data);
-                } else {
-                  return Center(
-                    child: Text('No Movie yet'),
-                  );
-                }
-              }),
+    return BlocProvider<MovieSearchBloc>(
+      bloc: movieSearchBloc,
+      child: Scaffold(
+        appBar: PreferredSize(
+          preferredSize:
+              Size.fromHeight(150.0 + MediaQuery.of(context).padding.top),
+          child: CustomAppBar(),
+        ),
+        body: SafeArea(
+          child: Container(
+            child: StreamBuilder<Movie>(
+                stream: movieSearchBloc.movieStream,
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    return MovieDetail(snapshot.data);
+                  } else {
+                    return Center(
+                      child: Text('No Movie yet'),
+                    );
+                  }
+                }),
+          ),
         ),
       ),
     );

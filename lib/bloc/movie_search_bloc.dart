@@ -23,6 +23,7 @@ class MovieSearchBloc implements BaseBloc {
 
   @override
   void dispose() {
+    print("Disposing MovieSearchBloc");
     _movieController.close();
     _queryController.close();
   }
