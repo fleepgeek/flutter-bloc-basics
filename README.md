@@ -5,7 +5,7 @@ An app to showcase and learn about the powerful features of Reactive Programming
 ## Tutorial Link
 
 Watch as we join forces to Demystify this innocent but powerful pattern.
-Playlist [Here](https://github.com/fleepgeek/flutter-bloc-basics)
+Playlist [Here](https://www.youtube.com/watch?v=A3z3eLD-Ang&list=PLkf3n4moMnEBpak7d9gkOvp6C46Ag5013)
 
 ### What you'll learn
 
