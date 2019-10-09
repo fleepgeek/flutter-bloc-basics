@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc_basics/bloc/bloc_provider.dart';
 import 'package:flutter_bloc_basics/bloc/movie_search_bloc.dart';
+import 'package:flutter_bloc_basics/service_locator.dart';
 
 class CustomAppBar extends StatelessWidget {
   double appBarHeight(BuildContext context) =>
@@ -38,7 +38,6 @@ class CustomAppBar extends StatelessWidget {
 class SearchBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    MovieSearchBloc bloc = BlocProvider.of<MovieSearchBloc>(context);
     return Card(
       elevation: 3.0,
       shape: RoundedRectangleBorder(
@@ -53,7 +52,7 @@ class SearchBox extends StatelessWidget {
           fillColor: Colors.white,
         ),
         // onChanged: (query) {},
-        onSubmitted: bloc.addQuery,
+        onSubmitted: sl.get<MovieSearchBloc>().addQuery,
       ),
     );
   }

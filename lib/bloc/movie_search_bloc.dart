@@ -28,3 +28,5 @@ class MovieSearchBloc implements BaseBloc {
     _queryController.close();
   }
 }
+
+// final movieSearch = MovieSearchBloc();

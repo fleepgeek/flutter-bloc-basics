@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc_basics/screens/friend_list.dart';
 import 'package:flutter_bloc_basics/screens/movie_search.dart';
+import 'package:flutter_bloc_basics/service_locator.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  setUpLocators();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
