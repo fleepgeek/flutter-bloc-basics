@@ -15,6 +15,7 @@ class FriendsBloc implements BaseBloc {
   }
 
   void dispose() {
+    print("Disposing FriendsBloc");
     _friendsController.close();
   }
 }

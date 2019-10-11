@@ -17,7 +17,7 @@ class MovieAPI {
         throw Exception("Error occured while fetching movie");
       }
     } catch (e) {
-      print("Error occured during connection");
+      print("Error occured during connection: $e");
       return null;
     }
   }
