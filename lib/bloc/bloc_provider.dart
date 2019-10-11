@@ -18,7 +18,7 @@ class BlocProvider<T extends BaseBloc> extends StatefulWidget {
     final type = _getType<_BlocProviderInherited<T>>();
     _BlocProviderInherited<T> provider =
         context.ancestorInheritedElementForWidgetOfExactType(type)?.widget;
-    print(provider);
+    // print(provider);
     return provider?.bloc;
   }
 
